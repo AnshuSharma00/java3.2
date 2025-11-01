@@ -1,0 +1,23 @@
+CREATE DATABASE springhibdb;
+USE springhibdb;
+
+CREATE TABLE Student (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    course VARCHAR(50),
+    marks DOUBLE
+);
+
+CREATE TABLE Account (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    holderName VARCHAR(50),
+    balance DOUBLE
+);
+
+CREATE TABLE TransactionRecord (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fromAccount INT,
+    toAccount INT,
+    amount DOUBLE,
+    date DATETIME
+);

@@ -1,0 +1,25 @@
+package com.example.app.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Student")
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column private String name;
+    @Column private String course;
+    @Column private double marks;
+
+    public Student() {}
+
+    public Student(String name, String course, double marks) {
+        this.name = name;
+        this.course = course;
+        this.marks = marks;
+    }
+
+    // Getters & Setters
+}

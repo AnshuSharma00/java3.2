@@ -1,0 +1,10 @@
+package com.example.app.main;
+
+import com.example.app.service.BankingService;
+
+public class TransactionDemo {
+    public static void main(String[] args) {
+        BankingService service = new BankingService();
+        service.transferMoney(1, 2, 500.0);
+    }
+}

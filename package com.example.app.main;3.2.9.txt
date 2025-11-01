@@ -1,0 +1,20 @@
+package com.example.app.main;
+
+import com.example.app.dao.StudentDAO;
+import com.example.app.model.Student;
+
+public class HibernateCRUDDemo {
+    public static void main(String[] args) {
+        StudentDAO dao = new StudentDAO();
+
+        dao.addStudent(new Student("Aman", "Java", 88.5));
+        dao.addStudent(new Student("Priya", "Python", 91.0));
+
+        dao.getAllStudents().forEach(s ->
+            System.out.println(s.getId() + " - " + s.getName() + " (" + s.getCourse() + ") " + s.getMarks())
+        );
+
+        dao.updateStudent(1, 92.0);
+        dao.deleteStudent(2);
+    }
+}

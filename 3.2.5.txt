@@ -1,0 +1,14 @@
+package com.example.app.main;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.example.app.config.AppConfig;
+import com.example.app.course.StudentCourse;
+
+public class DependencyInjectionDemo {
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        StudentCourse student = context.getBean(StudentCourse.class);
+        student.showInfo();
+        context.close();
+    }
+}

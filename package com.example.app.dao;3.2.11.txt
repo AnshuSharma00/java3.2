@@ -1,0 +1,24 @@
+package com.example.app.dao;
+
+import com.example.app.model.Account;
+import org.hibernate.*;
+import org.hibernate.cfg.Configuration;
+
+public class AccountDAO {
+    private static SessionFactory factory = new Configuration().configure().buildSessionFactory();
+
+    public Account getAccount(int id) {
+        Session session = factory.openSession();
+        Account acc = session.get(Account.class, id);
+        session.close();
+        return acc;
+    }
+
+    public void updateAccount(Account acc) {
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(acc);
+        tx.commit();
+        session.close();
+    }
+}

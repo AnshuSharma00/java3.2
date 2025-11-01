@@ -1,0 +1,44 @@
+// Account.java
+package com.example.app.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Account")
+public class Account {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String holderName;
+    private double balance;
+
+    public Account() {}
+    public Account(String holderName, double balance) {
+        this.holderName = holderName;
+        this.balance = balance;
+    }
+
+    // Getters & Setters
+}
+// TransactionRecord.java
+package com.example.app.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "TransactionRecord")
+public class TransactionRecord {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int fromAccount;
+    private int toAccount;
+    private double amount;
+    private Date date = new Date();
+
+    public TransactionRecord() {}
+    public TransactionRecord(int from, int to, double amount) {
+        this.fromAccount = from;
+        this.toAccount = to;
+        this.amount = amount;
+    }
+}

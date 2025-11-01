@@ -1,0 +1,28 @@
+SpringHibernateApp/
+│
+├── src/main/java/com/example/app/
+│   ├── config/
+│   │   ├── AppConfig.java
+│   │   └── HibernateConfig.java
+│   ├── model/
+│   │   ├── Student.java
+│   │   ├── Account.java
+│   │   └── TransactionRecord.java
+│   ├── dao/
+│   │   ├── StudentDAO.java
+│   │   └── AccountDAO.java
+│   ├── service/
+│   │   ├── StudentService.java
+│   │   └── BankingService.java
+│   ├── main/
+│   │   ├── DependencyInjectionDemo.java
+│   │   ├── HibernateCRUDDemo.java
+│   │   └── TransactionDemo.java
+│   └── course/
+│       ├── Course.java
+│       └── StudentCourse.java
+│
+├── src/main/resources/
+│   └── hibernate.cfg.xml
+│
+└── pom.xml

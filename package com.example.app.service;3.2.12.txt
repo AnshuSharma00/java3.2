@@ -1,0 +1,43 @@
+package com.example.app.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.example.app.dao.AccountDAO;
+import com.example.app.model.Account;
+import com.example.app.model.TransactionRecord;
+import org.hibernate.*;
+
+@Service
+public class BankingService {
+    private AccountDAO dao = new AccountDAO();
+
+    @Transactional
+    public void transferMoney(int fromId, int toId, double amount) {
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        try {
+            Account from = dao.getAccount(fromId);
+            Account to = dao.getAccount(toId);
+
+            if (from.getBalance() < amount) throw new RuntimeException("Insufficient Balance");
+
+            from.setBalance(from.getBalance() - amount);
+            to.setBalance(to.getBalance() + amount);
+
+            session.update(from);
+            session.update(to);
+            session.save(new TransactionRecord(fromId, toId, amount));
+
+            tx.commit();
+            System.out.println("Transaction Successful!");
+
+        } catch (Exception e) {
+            tx.rollback();
+            System.out.println("Transaction Failed: " + e.getMessage());
+        } finally {
+            session.close();
+        }
+    }
+}

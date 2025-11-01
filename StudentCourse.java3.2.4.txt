@@ -1,0 +1,14 @@
+// StudentCourse.java
+package com.example.app.course;
+
+public class StudentCourse {
+    private Course course;
+
+    public StudentCourse(Course course) {
+        this.course = course;
+    }
+
+    public void showInfo() {
+        System.out.println("Student enrolled in -> " + course.getDetails());
+    }
+}

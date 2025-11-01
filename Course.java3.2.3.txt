@@ -1,0 +1,16 @@
+// Course.java
+package com.example.app.course;
+
+public class Course {
+    private String name;
+    private int duration;
+
+    public Course(String name, int duration) {
+        this.name = name;
+        this.duration = duration;
+    }
+
+    public String getDetails() {
+        return "Course: " + name + ", Duration: " + duration + " hours";
+    }
+}
